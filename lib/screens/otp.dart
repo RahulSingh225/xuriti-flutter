@@ -1,3 +1,4 @@
+import 'package:flutt_app/widgets/otpform.dart';
 import 'package:flutter/material.dart';
 
 class OTP extends StatelessWidget {
@@ -56,15 +57,43 @@ class OTP extends StatelessWidget {
                                   Icons.arrow_back,
                                   color: Colors.deepOrange,
                                 )),
-                            const Text("Forgot Password?",
+                            const Text("Enter OTP",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 36)),
                           ],
                         ),
-                        const Text("We’ll send a recovery link",
+                        const Text("We have sent an OTP on your 84XXXXXX98",
                             style: TextStyle(fontSize: 16)),
                       ],
                     ),
+                    SizedBox(
+                        height: MediaQuery.of(context).size.height / 2,
+                        width: MediaQuery.of(context).size.width / 2 - 100,
+                        child: const OTPForm()),
+                    Row(
+                      children: [
+                        SizedBox(
+                          height: 24,
+                          width: 72,
+                          child: Image.asset(
+                            "assets/images/logo_small.jpg",
+                            fit: BoxFit.scaleDown,
+                          ),
+                        ),
+                        const VerticalDivider(
+                          thickness: 2,
+                          color: Colors.deepOrange,
+                        ),
+                        const SizedBox(
+                          height: 40,
+                          width: 180,
+                          child: Text(
+                            "More than 500 merchants in your area are on Xuriti.",
+                            style: TextStyle(fontSize: 14),
+                          ),
+                        )
+                      ],
+                    )
                   ])
             ])));
   }

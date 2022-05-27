@@ -60,7 +60,6 @@ class Login extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                      height: MediaQuery.of(context).size.height / 2,
                       child: MyCustomForm(),
                       width: MediaQuery.of(context).size.width / 2 - 100),
                   Row(
@@ -73,7 +72,7 @@ class Login extends StatelessWidget {
                       TextButton(
                           onPressed: (() =>
                               // Within the `FirstRoute` widget
-                              {Navigator.pushNamed(context, '/signup')}),
+                              {Navigator.pushNamed(context, '/createaccount')}),
                           child: Text(
                             "Sign up",
                             style: TextStyle(

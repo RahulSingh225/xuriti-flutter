@@ -62,6 +62,7 @@ class ForgotPassword extends StatelessWidget {
                                     fontWeight: FontWeight.bold, fontSize: 36)),
                           ],
                         ),
+                        Padding(padding: EdgeInsets.only(top: 15)),
                         const Text("We’ll send a recovery link",
                             style: TextStyle(fontSize: 16)),
                       ],
@@ -70,6 +71,30 @@ class ForgotPassword extends StatelessWidget {
                         height: MediaQuery.of(context).size.height / 2,
                         width: MediaQuery.of(context).size.width / 2 - 100,
                         child: const ForgotPassForm()),
+                    Row(
+                      children: [
+                        SizedBox(
+                          height: 24,
+                          width: 72,
+                          child: Image.asset(
+                            "assets/images/logo_small.jpg",
+                            fit: BoxFit.scaleDown,
+                          ),
+                        ),
+                        VerticalDivider(
+                          thickness: 2,
+                          color: Colors.deepOrange,
+                        ),
+                        SizedBox(
+                          height: 40,
+                          width: 180,
+                          child: Text(
+                            "More than 500 merchants in your area are on Xuriti.",
+                            style: TextStyle(fontSize: 14),
+                          ),
+                        )
+                      ],
+                    )
                   ])
             ])));
   }

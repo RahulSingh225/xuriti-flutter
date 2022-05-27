@@ -8,18 +8,18 @@ import 'package:flutt_app/util/api_service.dart';
 import 'package:flutter/material.dart';
 
 // Define a custom Form widget.
-class ForgotPassForm extends StatefulWidget {
-  const ForgotPassForm({super.key});
+class OTPForm extends StatefulWidget {
+  const OTPForm({super.key});
 
   @override
-  ForgotPassFormState createState() {
-    return ForgotPassFormState();
+  OTPFormState createState() {
+    return OTPFormState();
   }
 }
 
 // Define a corresponding State class.
 // This class holds data related to the form.
-class ForgotPassFormState extends State<ForgotPassForm> {
+class OTPFormState extends State<OTPForm> {
   String email = "";
   String password = "";
   bool isPasswordVisible = true;
@@ -27,7 +27,7 @@ class ForgotPassFormState extends State<ForgotPassForm> {
   // and allows validation of the form.
   //
   // Note: This is a `GlobalKey<FormState>`,
-  // not a GlobalKey<ForgotPassFormState>.
+  // not a GlobalKey<OTPFormState>.
   final myController = TextEditingController();
 
   @override
@@ -47,18 +47,46 @@ class ForgotPassFormState extends State<ForgotPassForm> {
       child: Column(
         children: <Widget>[
           Container(
+            padding: EdgeInsets.only(top: 10, bottom: 20),
             width: 250,
             child: TextFormField(
               onSaved: ((newValue) => email = newValue.toString()),
               // The validator receives the text that the user has entered.
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter Email.';
+                  return 'Please enter mobile no.';
                 }
                 return null;
               },
+              enabled: false,
+              initialValue: "8457XXXX59",
               decoration: InputDecoration(
-                hintText: "Email",
+                hintText: "Mobile No.",
+                hintStyle: TextStyle(color: Colors.black87),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(
+                    color: Colors.deepOrange,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 10, bottom: 20),
+            width: 250,
+            child: TextFormField(
+              onSaved: ((newValue) => email = newValue.toString()),
+              // The validator receives the text that the user has entered.
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter OTP.';
+                }
+                return null;
+              },
+
+              decoration: InputDecoration(
+                hintText: "Enter OTP",
                 hintStyle: TextStyle(color: Colors.black87),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
@@ -72,7 +100,7 @@ class ForgotPassFormState extends State<ForgotPassForm> {
 
           Container(
             width: 250,
-            height: 70,
+            height: 100,
             // ignore: sort_child_properties_last
             child: ElevatedButton(
               onPressed: () async {
@@ -99,19 +127,28 @@ class ForgotPassFormState extends State<ForgotPassForm> {
                 }
               },
               child: const Text(
-                'SEND RECOVERY LINK',
+                'VERIFY',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                     color: Colors.white),
               ),
             ),
-            padding: EdgeInsets.only(top: 20),
+            padding: EdgeInsets.only(top: 20, bottom: 30),
           ),
-          Padding(padding: EdgeInsets.only(top: 30)),
+          TextButton(
+              onPressed: (() => ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("OTP Sent Successfully.")))),
+              child: Text(
+                "RESEND OTP",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16),
+              )),
           TextButton(
               onPressed: (() => Navigator.pop(context)),
-              child: Text("Return to Login"))
+              child: Text("Already a registered member? Login Now"))
 
           // Add TextFormFields and ElevatedButton here.
         ],

@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const Login(),
         // When navigating to the "/second" route, build the SecondScreen widget.
         '/forgotpassword': (context) => const ForgotPassword(),
-        '/sigup': (context) => const SignUp(),
+        '/signup': (context) => const SignUp(),
         '/otp': (context) => const OTP(),
         '/createaccount': (context) => const CreateAccount(),
         '/changepassword': (context) => const ChangePassword(),

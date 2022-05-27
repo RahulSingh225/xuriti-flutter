@@ -8,18 +8,18 @@ import 'package:flutt_app/util/api_service.dart';
 import 'package:flutter/material.dart';
 
 // Define a custom Form widget.
-class ForgotPassForm extends StatefulWidget {
-  const ForgotPassForm({super.key});
+class CreateAccountForm extends StatefulWidget {
+  const CreateAccountForm({super.key});
 
   @override
-  ForgotPassFormState createState() {
-    return ForgotPassFormState();
+  CreateAccountFormState createState() {
+    return CreateAccountFormState();
   }
 }
 
 // Define a corresponding State class.
 // This class holds data related to the form.
-class ForgotPassFormState extends State<ForgotPassForm> {
+class CreateAccountFormState extends State<CreateAccountForm> {
   String email = "";
   String password = "";
   bool isPasswordVisible = true;
@@ -27,7 +27,7 @@ class ForgotPassFormState extends State<ForgotPassForm> {
   // and allows validation of the form.
   //
   // Note: This is a `GlobalKey<FormState>`,
-  // not a GlobalKey<ForgotPassFormState>.
+  // not a GlobalKey<CreateAccountFormState>.
   final myController = TextEditingController();
 
   @override
@@ -47,18 +47,99 @@ class ForgotPassFormState extends State<ForgotPassForm> {
       child: Column(
         children: <Widget>[
           Container(
+            padding: EdgeInsets.only(top: 10),
             width: 250,
             child: TextFormField(
               onSaved: ((newValue) => email = newValue.toString()),
               // The validator receives the text that the user has entered.
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter Email.';
+                  return 'Please enter email.';
                 }
                 return null;
               },
+
               decoration: InputDecoration(
                 hintText: "Email",
+                hintStyle: TextStyle(color: Colors.black87),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(
+                    color: Colors.deepOrange,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            width: 250,
+            child: TextFormField(
+              obscureText: !isPasswordVisible,
+              onSaved: ((newValue) => password = newValue.toString()),
+              // The validator receives the text that the user has entered.
+
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter password';
+                }
+                return null;
+              },
+
+              decoration: InputDecoration(
+                  hintText: "Password",
+                  hintStyle: TextStyle(color: Colors.black87),
+                  suffixIcon: IconButton(
+                      icon: Icon(
+                        isPasswordVisible
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        color: Colors.deepOrange,
+                      ),
+                      onPressed: () => setState(() {
+                            isPasswordVisible = !isPasswordVisible;
+                          }))),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 10),
+            width: 250,
+            child: TextFormField(
+              onSaved: ((newValue) => email = newValue.toString()),
+              // The validator receives the text that the user has entered.
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter first name.';
+                }
+                return null;
+              },
+
+              decoration: InputDecoration(
+                hintText: "First Name",
+                hintStyle: TextStyle(color: Colors.black87),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(
+                    color: Colors.deepOrange,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 10),
+            width: 250,
+            child: TextFormField(
+              onSaved: ((newValue) => email = newValue.toString()),
+              // The validator receives the text that the user has entered.
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter last name.';
+                }
+                return null;
+              },
+
+              decoration: InputDecoration(
+                hintText: "Last Name",
                 hintStyle: TextStyle(color: Colors.black87),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
@@ -72,7 +153,7 @@ class ForgotPassFormState extends State<ForgotPassForm> {
 
           Container(
             width: 250,
-            height: 70,
+            height: 80,
             // ignore: sort_child_properties_last
             child: ElevatedButton(
               onPressed: () async {
@@ -99,19 +180,21 @@ class ForgotPassFormState extends State<ForgotPassForm> {
                 }
               },
               child: const Text(
-                'SEND RECOVERY LINK',
+                'CREATE ACCOUNT',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                     color: Colors.white),
               ),
             ),
-            padding: EdgeInsets.only(top: 20),
+            padding: EdgeInsets.only(
+              top: 20,
+            ),
           ),
-          Padding(padding: EdgeInsets.only(top: 30)),
+
           TextButton(
               onPressed: (() => Navigator.pop(context)),
-              child: Text("Return to Login"))
+              child: Text("Already a registered member? Login Now"))
 
           // Add TextFormFields and ElevatedButton here.
         ],
