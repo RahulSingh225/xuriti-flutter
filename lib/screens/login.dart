@@ -37,23 +37,19 @@ class Login extends StatelessWidget {
                           aspectRatio: 1,
                           child: Image.asset(
                             'assets/images/bg.jpg',
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fitHeight,
                             height: MediaQuery.of(context).size.height / 2,
-                            width: MediaQuery.of(context).size.width / 2,
+                            width: MediaQuery.of(context).size.width,
                             alignment: Alignment.center,
                           )),
-                      Align(
-                          alignment: Alignment.center,
-                          child: Container(
-                            height: MediaQuery.of(context).size.height * 0.5,
-                            width: MediaQuery.of(context).size.width * 0.5,
-                            alignment: Alignment.topCenter,
-                            child: Expanded(
-                              child: Image.asset(
-                                'assets/images/logo.jpg',
-                              ),
-                            ),
-                          ))
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.5,
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        alignment: Alignment.centerRight,
+                        child: Image.asset(
+                          'assets/images/logo.jpg',
+                        ),
+                      ),
                     ],
                   )),
               Divider(
@@ -153,10 +149,8 @@ class Login extends StatelessWidget {
                         child: Container(
                           height: MediaQuery.of(context).size.height * 0.25,
                           width: MediaQuery.of(context).size.width * 0.4,
-                          child: Expanded(
-                            child: Image.asset(
-                              'assets/images/logo.jpg',
-                            ),
+                          child: Image.asset(
+                            'assets/images/logo.jpg',
                           ),
                           padding: EdgeInsets.only(
                             left: MediaQuery.of(context).size.width / 5,
